@@ -1,0 +1,38 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestión de maquina {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edición de Maquina</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarMaquina/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtCodigo" name="txtCodigo" value="{{maquina.codigo}}" class="form-control" placeholder="Código"
+                             readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtModelo" name="txtModelo" value="{{maquina.modelo}}" class="form-control" placeholder="Modelo"
+                             required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtOperador" name="txtOperador" value="{{maquina.operador}}" class="form-control" placeholder="Operador"
+                             required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="txtEstado" name="txtEstado" value="{{maquina.estado}}" class="form-control" placeholder="Estado"
+                             required>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

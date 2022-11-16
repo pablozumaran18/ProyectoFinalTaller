@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>Inicio Sesion</title>
+</head>
+
+<style>
+    #logo{
+    width: 100px;
+    left: 1px;
+    margin-right: 10px;
+    
+    
+}
+</style>
+<body>
+    <div class="container mt-5  justify-content-center">
+        <div class="justify-content-center mt-5">
+            <img id="logo" src="https://scontent.fari1-1.fna.fbcdn.net/v/t1.18169-9/10437357_245377945662603_1629114925674012742_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=174925&_nc_eui2=AeEi4Bi1rBG-6aQxsuSVnXVzook-atZbZfiiiT5q1ltl-ODsVECu6NujHvt-2Sm7V9SRB7x5_p1uwhZfaNMDIVm6&_nc_ohc=Jv1621tyHh4AX-joutk&_nc_ht=scontent.fari1-1.fna&oh=00_AfBt2EEseKcjellKkQFOajTvk6A5QQvrODIp_p1Yk8ggMg&oe=6398F482" alt=""><h1>Inicio Sesion</h1>
+
+            <form action="{% url 'sesion_iniciada' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="rut">Rut:</label>
+                    <input type="text" class="form-control" name="rut" placeholder="Ingrese rut sin punto y con guion">
+                </div>
+                <div class="form-group">
+                    <label for="clave">Ingrese su clave:</label>
+                    <input type="password" class="form-control" name="clave">
+                </div>
+                <div class="form-group is-grouped mt-3">
+                    <button class="btn btn-success">Iniciar Sesion</button>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container mt-5 d-flex justify-content-center mt-5">
+
+        {% block content %}
+
+        {% if context %}
+
+        <h2 class="subtitle">{{context}}</h1>
+
+        {% endif %}
+
+        {% endblock %}
+
+    </div>
+</body>
+</html>
